@@ -10,6 +10,8 @@ async function addProduct(req, res) {
 
   const { userName, productName, quantity } = req.body;
 
+  const qty = Number(quantity);
+
   if (userName || productName) {
     const foundUser = await userRegister.findOne({ name: userName });
     if (foundUser) {
@@ -23,7 +25,7 @@ async function addProduct(req, res) {
 
           if (itemIndex > -1) {
             let productItem = cartData.items[itemIndex];
-            productItem.quantity += quantity;
+            productItem.quantity += qty;
             cartData.items[itemIndex] = productItem;
           } else {
             // const product = await productAdd.findOne({ name: productName });
@@ -33,7 +35,7 @@ async function addProduct(req, res) {
             cartData.items.push({
               productId: productData._id,
               name: productData.name,
-              quantity,
+              quantity: qty,
               price: productData.price
             });
             // }
@@ -52,7 +54,7 @@ async function addProduct(req, res) {
               items: [{
                 productId: productData._id,
                 name: productData.name,
-                quantity,
+                quantity: qty,
                 price: productData.price
               }],
               bill: quantity * productData.price
@@ -76,3 +78,4 @@ async function addProduct(req, res) {
 };
 
 module.exports = addProduct;
+
