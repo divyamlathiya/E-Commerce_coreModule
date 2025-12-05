@@ -6,18 +6,24 @@ var productRegister = require('../../models/product.model.js');
 /* GET home page. */
 async function deleteProduct(req, res, next) {
 
-  const productData = await productRegister.findOne({ name: "Computer" }).lean();
+  const { productName } = req.body;
 
-  if (productData) {
-    const deleteProductData = await productRegister.findOneAndDelete({ name: "Computer" }).lean();
+  const productData = await productRegister.findOne({ name: productName }).lean();
 
-    if (deleteProductData) {
-      return response.onSuccess(res, productData, 'Record deleted successfully');
+  if (productName) {
+    if (productData) {
+      const deleteProductData = await productRegister.findOneAndDelete({ name: productName }).lean();
+  
+      if (deleteProductData) {
+        return response.onSuccess(res, productData, 'Record deleted successfully');
+      } else {
+        return response.onError(res, 'Record not delered');
+      }
     } else {
-      return response.onError(res, 'Record not delered');
+      return response.onError(res, 'No data found');
     }
   } else {
-    return response.onError(res, 'No data found');
+    response.onError(res, 'ProductName field is required');
   }
 };
 
