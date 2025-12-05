@@ -28,7 +28,7 @@ async function registerUser(req, res, next) {
               response.onError(res, 'Phone is invalid');
             } else {                 
             if (!existingPhone) {
-              if (address) {                
+              if (address && address.street && address.city && address.state && address.country && address.zip) {                
                 const encryptedPassword = await encPass(password);
   
                 const newUser = new userRegister ({
@@ -68,3 +68,4 @@ async function registerUser(req, res, next) {
 };
 
 module.exports = registerUser;
+
