@@ -86,6 +86,11 @@ const orderSchema = new mongoose.Schema({
         required: true
     },
 
+    upiId: {
+    type: String,
+    required: false
+    },
+
     status: {
         type: String,
         enum: ['Pending', 'Shipped', 'Deliverd', 'Cancelled'],
