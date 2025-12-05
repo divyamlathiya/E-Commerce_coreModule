@@ -61,6 +61,11 @@ cartRoute = [
   { path: '/view', routePath: '/view' },
 ];
 
+orderRoute = [
+  { path: '/createOrder', routePath: '/createOrder' },
+  { path: '/cancelOrder', routePath: '/cancelOrder' }
+];
+
 
 userRoute.forEach((a) => {
   app.use('/user' + a.path, require('./routes/user' + a.routePath));
@@ -76,6 +81,10 @@ categoryRoute.forEach((c) => {
 
 cartRoute.forEach((d) => {
   app.use('/cart' + d.path, require('./routes/cart' + d.routePath));
+});
+
+orderRoute.forEach((e) => {
+  app.use('/order' + e.path, require('./routes/order' + e.routePath));
 });
 
 // catch 404 and forward to error handler
