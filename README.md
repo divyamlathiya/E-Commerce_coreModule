@@ -27,7 +27,7 @@ This is a RESTful API for an e-commerce system, including user authentication, c
 - **Update Quantity**
 - **Remove Product & Discard Cart**
 
-- ### 4. Order Management
+### 5. Order Management
 -  **Create order**
 -  **Cancel order**
 
