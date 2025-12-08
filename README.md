@@ -27,6 +27,10 @@ This is a RESTful API for an e-commerce system, including user authentication, c
 - **Update Quantity**
 - **Remove Product & Discard Cart**
 
+- ### 4. Order Management
+-  **Create order**
+-  **Cancel order**
+
 
 ## Technologies Used
 - Node.js
