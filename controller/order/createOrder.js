@@ -11,6 +11,7 @@ async function createOrder(req, res, next) {
     const { paymentMethod, upiId } = req.body;
 
     const foundUser = await userRegister.findById(req.user.userId);
+
     if (foundUser) {
         const foundCart = await cartRegister.findOne({ userId: foundUser._id });
         if (foundCart && foundCart.items.length > 0) {
@@ -67,7 +68,6 @@ async function createOrder(req, res, next) {
                             })),
                             totalAmount: foundCart.bill,
                             paymentMethod: paymentMethod,
-                            upiId: null,
                             status: 'Pending'
                         });
 
