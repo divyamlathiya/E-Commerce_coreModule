@@ -8,18 +8,22 @@ async function cancelOrder(req, res, next) {
 
     const { orderId } = req.body;
 
-    const foundOrder = await orderRegister.findById(orderId);
-    if (foundOrder) {
-        if (foundOrder.status == 'Pending') {
-            foundOrder.status = 'Cancelled';
-            await foundOrder.save();
+    if (orderId) {
+        const foundOrder = await orderRegister.findById(orderId);
+        if (foundOrder) {
+            if (foundOrder.orderStatus == 'Pending') {
+                foundOrder.orderStatus = 'Cancelled';
+                await foundOrder.save();
 
-            response.onSuccess(res, foundOrder, 'Order cancelled successfully');
+                response.onSuccess(res, foundOrder, 'Order cancelled successfully');
+            } else {
+                response.onError(res, `Order can not cancelled. Current status is ${foundOrder.orderStatus}`);
+            }
         } else {
-            response.onError(res, `Order can not cancelled. Current status is ${foundOrder.status}`);
+            response.onError(res, 'Order not found');
         }
     } else {
-        response.onError(res, 'Order not found');
+        response.onError(res, 'OrderId field is required');
     }
 
 };
