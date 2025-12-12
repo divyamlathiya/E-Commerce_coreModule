@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var response = require('../../utilities/responseManager.js');
 var orderRegister = require('../../models/order.model.js');
-var orderItemsRegister = require('../../models/orderItem.js');
+var orderItemsRegister = require('../../models/orderItem.model.js');
 var userRegister = require('../../models/userRegister.model.js');
 var cartRegister = require('../../models/cart.model.js');
 var paymentRegister = require('../../models/payment.model.js');
@@ -147,3 +147,4 @@ async function createOrder(req, res, next) {
 };
 
 module.exports = createOrder;
+
