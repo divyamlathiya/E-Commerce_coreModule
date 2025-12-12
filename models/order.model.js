@@ -13,16 +13,6 @@ const orderSchema = new mongoose.Schema({
         required: true
     },
 
-    email: {
-        type: String,
-        required: true
-    },
-
-    phone: {
-        type: String,
-        required: true
-    },
-
     address: {
         street: {
             type: String,
@@ -50,30 +40,30 @@ const orderSchema = new mongoose.Schema({
         }
     },
 
-    items: [
-        {
-            productId: {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: constant.MODELS.product,
-                required: true
-            },
+    // items: [
+    //     {
+    //         productId: {
+    //             type: mongoose.Schema.Types.ObjectId,
+    //             ref: constant.MODELS.product,
+    //             required: true
+    //         },
 
-            productName: {
-                type: String,
-                required: true
-            },
+    //         productName: {
+    //             type: String,
+    //             required: true
+    //         },
 
-            quantity: {
-                type: Number,
-                required: true
-            },
+    //         quantity: {
+    //             type: Number,
+    //             required: true
+    //         },
 
-            price: {
-                type: Number,
-                required: true
-            }
-        }
-    ],
+    //         price: {
+    //             type: Number,
+    //             required: true
+    //         }
+    //     }
+    // ],
 
     totalAmount: {
         type: Number,
@@ -86,12 +76,18 @@ const orderSchema = new mongoose.Schema({
         required: true
     },
 
+    paymentStatus: {
+        type: String,
+        enum: ['Pending', 'Failed', 'Paid'],
+        required: true
+    },
+
     upiId: {
     type: String,
     required: false
     },
 
-    status: {
+    orderStatus: {
         type: String,
         enum: ['Pending', 'Shipped', 'Deliverd', 'Cancelled'],
         default: 'Pending'
