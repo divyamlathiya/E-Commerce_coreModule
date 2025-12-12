@@ -4,7 +4,11 @@ const constant = ({
         user: 'users',
         product: 'products',
         cart: 'carts',
-        category: 'categories'
+        category: 'categories',
+        order: 'orders',
+        orderItem: 'orderItems',
+        payment: 'payments',
+        admin: 'admins'
     }
 });
 
