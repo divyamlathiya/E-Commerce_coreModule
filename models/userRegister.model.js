@@ -1,7 +1,7 @@
-const mongooose = require('mongoose');
+const mongoose = require('mongoose');
 const constant = require('../utilities/constant.js');
 
-const userSchema = new mongooose.Schema({
+const userSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true
@@ -42,6 +42,11 @@ const userSchema = new mongooose.Schema({
         country: {
             type: String,
             required: true
+        },
+
+        zip: {
+            type: String,
+            required: true
         }
     },
 
@@ -51,4 +56,4 @@ const userSchema = new mongooose.Schema({
     }
 });
 
-module.exports = mongooose.model(constant.MODELS.user, userSchema);
+module.exports = mongoose.model(constant.MODELS.user, userSchema);
