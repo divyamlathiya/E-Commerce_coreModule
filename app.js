@@ -6,6 +6,7 @@ var logger = require('morgan');
 var cors = require('cors');
 var mongoose = require('mongoose');
 require('dotenv').config();
+var connectDB = require('./utilities/db.js');
 
 // var indexRouter = require('./routes/index');
 // var usersRouter = require('./routes/users');
@@ -25,12 +26,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // app.use('/', indexRouter);
 // app.use('/users', usersRouter);
-mongoose.connect(process.env.MONGO_URI);
-mongoose.connection.once('open', () => {
-  console.log('MongoDB connected successfully');
-}).on('error', (err) => {
-  console.log('Error:', err);
-});
+// mongoose.connect(process.env.MONGO_URI);
+// mongoose.connection.once('open', () => {
+//   console.log('MongoDB connected successfully');
+// }).on('error', (err) => {
+//   console.log('Error:', err);
+// });
+connectDB();
 
 userRoute = [
   { path: '/login', routePath: '/login' },
@@ -66,6 +68,10 @@ orderRoute = [
   { path: '/cancelOrder', routePath: '/cancelOrder' }
 ];
 
+adminRoute = [
+  { path: '/adminLogin', routePath: '/adminLogin' }
+];
+
 
 userRoute.forEach((a) => {
   app.use('/user' + a.path, require('./routes/user' + a.routePath));
@@ -85,6 +91,10 @@ cartRoute.forEach((d) => {
 
 orderRoute.forEach((e) => {
   app.use('/order' + e.path, require('./routes/order' + e.routePath));
+});
+
+adminRoute.forEach((f) => {
+  app.use('/admin' + f.path, require('./routes/admin' + f.routePath));
 });
 
 // catch 404 and forward to error handler
