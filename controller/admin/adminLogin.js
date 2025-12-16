@@ -16,9 +16,11 @@ async function adminLogin(req, res, next) {
             const foundAdmin = await adminRegister.findOne({ adminEmail: email }).lean();
             if (foundAdmin) {
                 if (password) {
-                    // const decryptedPassword = decPass(foundAdmin.password);
-                    if (foundAdmin.password == password) {
-                        const token = jwt.sign({ adminId: foundAdmin._id, adminEmail: foundAdmin.adminEmail }, process.env.JSON_SECRET, { expiresIn: '1h' });
+                    console.log('adminPass', foundAdmin.password);
+                    const decryptedPassword = await decPass(foundAdmin.password);
+                    console.log('decPass', decryptedPassword);
+                    if (password == decryptedPassword) {
+                        const token = jwt.sign({ adminId: foundAdmin._id, adminEmail: foundAdmin.adminEmail, role: foundAdmin.role }, process.env.JSON_SECRET, { expiresIn: '1h' });
 
                         delete foundAdmin.password;
 
