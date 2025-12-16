@@ -8,6 +8,7 @@ This is a RESTful API for an e-commerce system, including user authentication, c
   - **Update Profile**
   - **Change Password**
   - **Forget Password** – With OTP/Token validation
+- **Role-based Login** – admin/user
 
 ### 2. Category Management
 - **CRUD** operations for categories
