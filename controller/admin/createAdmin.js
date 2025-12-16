@@ -1,22 +1,25 @@
-const mongoose = require('mongoose');
+const path = require('path');
+require('dotenv').config({
+    path: path.resolve(__dirname, '../../.env')
+});
+
 const { encPass } = require('../../utilities/EncDec.js');
 const adminRegister = require('../../models/adminRegister.model.js');
 const connectDB = require('../../utilities/db.js');
-require('dotenv').config();
+
 
 async function createAdmin() {
-    // await connectDB();
-    await mongoose.connect("mongodb://localhost:27017/E-commerce");
+    await connectDB();
 
-    // console.log('Password', process.env.adminPassword);
-    const adminPassword = "1324"
-    console.log('adminpass', adminPassword)
-    const encryptedPassword = await encPass(adminPassword);
+    const password = process.env.adminPassword;
+
+    const encryptedPassword = await encPass(password);
     
     await adminRegister.create({
-        adminEmail: 'admin1@gmail.com',
+        adminEmail: process.env.adminEmail,
         password: encryptedPassword,
-        adminName: 'Super admin'
+        adminName: process.env.adminName,
+        role: 'admin'
     });
 
     console.log('Admin created');
