@@ -69,7 +69,8 @@ orderRoute = [
 ];
 
 adminRoute = [
-  { path: '/adminLogin', routePath: '/adminLogin' }
+  { path: '/adminLogin', routePath: '/adminLogin' },
+  { path: '/getAdminProfl', routePath: '/getAdminProfl' }
 ];
 
 
