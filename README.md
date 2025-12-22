@@ -10,17 +10,22 @@ This is a RESTful API for an e-commerce system, including user authentication, c
   - **Forget Password** – With OTP/Token validation
 - **Role-based Login** – admin/user
 
-### 2. Category Management
-- **CRUD** operations for categories
+### 2. Admin (Authentication)
+-  **Admin Login** - JWT-based authentication (Super admin created)
+-  **View Admin Profile**
 
-### 3. Product Management
-- **Create Product**
-- **View Products**
-  - Supports pagination, sorting, and filtering
-- **Update Product**
-- **Delete Product**
+### 3. Category Management
+- **CRUD** operations for categories (for logged-in admin)
 
-### 4. Cart System
+### 4. Product Management
+- **For logged-in admin**
+    - **Create Product**
+    - **View Products**
+      - Supports pagination, sorting, and filtering
+    - **Update Product**
+    - **Delete Product**
+
+### 5. Cart System
 - **Add Product to Cart**
   - If product exists, increase quantity (for logged-in users)
 - **View Cart**
@@ -28,7 +33,7 @@ This is a RESTful API for an e-commerce system, including user authentication, c
 - **Update Quantity**
 - **Remove Product & Discard Cart**
 
-### 5. Order Management
+### 6. Order Management
 -  **Create order**
 -  **Cancel order**
 
