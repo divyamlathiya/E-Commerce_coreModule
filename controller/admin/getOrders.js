@@ -1,13 +1,19 @@
 var express = require('express');
 var router = express.Router();
-var getOrders = require('../../controller/admin/getOrders.js');
-var { isAdmin } = require('../../middleware/isAdmin.js');
+var response = require('../../utilities/responseManager.js');
+var orderRegister = require('../../models/orderItem.model.js');
 
 /* GET home page. */
-router.post('/', isAdmin, async function (req, res, next) {
+async function getOrders(req, res, next) {
 
-  await getOrders(req, res);
-  
-});
+    const getOrders = await orderRegister.find({  });
 
-module.exports = router;
+    if (getOrders) {
+        response.onSuccess(res, getOrders, 'Order found');
+    } else {
+        response.onError(res, 'No order found');
+    }
+
+};
+
+module.exports = getOrders;
