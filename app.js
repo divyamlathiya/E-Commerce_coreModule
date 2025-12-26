@@ -40,7 +40,8 @@ userRoute = [
   { path: '/changePass', routePath: '/changePass' },
   { path: '/reqForResetPass', routePath: '/reqForResetPass' },
   { path: '/resetPass', routePath: '/resetPass' },
-  { path: '/updateProfile', routePath: '/updateProfile' }
+  { path: '/updateProfile', routePath: '/updateProfile' },
+  { path: '/deleteUser', routePath: '/deleteUser' },
 ];
 
 productRoute = [
