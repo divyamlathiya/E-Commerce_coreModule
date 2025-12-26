@@ -72,7 +72,8 @@ adminRoute = [
   { path: '/adminLogin', routePath: '/adminLogin' },
   { path: '/getAdminProfl', routePath: '/getAdminProfl' },
   { path: '/changeOrderStatus', routePath: '/changeOrderStatus' },
-  { path: '/getOrders', routePath: '/getOrders' }
+  { path: '/getOrders', routePath: '/getOrders' },
+  { path: '/getOrderDetails', routePath: '/getOrderDetails' },
 ];
 
 
