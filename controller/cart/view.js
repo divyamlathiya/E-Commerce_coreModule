@@ -6,12 +6,18 @@ var cartRegister = require('../../models/cart.model.js');
 /* GET home page. */
 async function viewCart(req, res, next) {
 
-  const cartData = await cartRegister.find({ userName: 'test' }).lean();
+  const { userName } = req.body;
 
-  if (cartData.length > 0) {
-    response.onSuccess(res, cartData, 'Data fatched');
+  if (userName) {
+    const cartData = await cartRegister.find({ userName: userName }).lean();
+
+    if (cartData.length > 0) {
+      response.onSuccess(res, cartData, 'Data fatched');
+    } else {
+      response.onError(res, 'Data not found');
+    }
   } else {
-    response.onError(res, 'Data not found');
+    response.onError(res, 'UserName field is required');
   }
 
 };
