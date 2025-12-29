@@ -4,7 +4,7 @@ var response = require('../../utilities/responseManager.js');
 var categoryRegister = require('../../models/category.model.js');
 
 /* GET users listing. */
-async function readCategory(req, res, next) {
+async function readCategries(req, res, next) {
   
   const categoryData = await categoryRegister.find({  });
 
@@ -16,4 +16,5 @@ async function readCategory(req, res, next) {
 
 };
 
-module.exports = readCategory;
+module.exports = readCategries;
+
