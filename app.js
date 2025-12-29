@@ -75,6 +75,7 @@ adminRoute = [
   { path: '/changeOrderStatus', routePath: '/changeOrderStatus' },
   { path: '/getOrders', routePath: '/getOrders' },
   { path: '/getOrderDetails', routePath: '/getOrderDetails' },
+  { path: '/getCategories', routePath: '/getCategories' },
 ];
 
 
