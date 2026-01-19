@@ -15,7 +15,7 @@ async function updateProfile(req, res, next) {
             if (emailRegex.test(email)) {
                 const foundUser = await userRegister.findOne({ email: email });
                 if (foundUser) {
-                const phoneRegex = /^[+]{1}(?:[0-9\-\\(\\)\\/.]\s?){10,12}[0-9]{1}$/;;
+                const phoneRegex = /^[+]{1}(?:[0-9\-\\(\\)\\/.]\s?){10,12}[0-9]{1}$/;
                 if (phoneRegex.test(phone)) {
                     if (address && address.street && address.city && address.state && address.country) {
 
@@ -50,3 +50,4 @@ async function updateProfile(req, res, next) {
 };
 
 module.exports = updateProfile;
+
